@@ -1,0 +1,6 @@
+{"level":"info","message":"Secured application started","timestamp":"2026-04-26T19:13:58.026Z"}
+{"level":"info","message":"Server started on port 3000","timestamp":"2026-04-26T19:13:58.401Z"}
+{"level":"warn","message":"Access denied: No token provided from IP ::ffff:127.0.0.1","timestamp":"2026-04-26T19:15:02.353Z"}
+{"level":"info","message":"Secured application started","timestamp":"2026-04-26T19:46:37.080Z"}
+{"level":"info","message":"Server started on port 3000","timestamp":"2026-04-26T19:46:37.108Z"}
+{"level":"info","message":"Admin user created","timestamp":"2026-04-26T19:46:37.242Z"}
