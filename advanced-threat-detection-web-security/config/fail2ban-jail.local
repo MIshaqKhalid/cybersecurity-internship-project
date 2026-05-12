@@ -1,0 +1,46 @@
+# ─── Fail2Ban Configuration: Week 4 Intrusion Detection ─────────────────────
+# Place this file at: /etc/fail2ban/jail.local
+
+[DEFAULT]
+# Ban for 1 hour
+bantime  = 3600
+# Monitor last 10 minutes
+findtime = 600
+# Allow 5 retries
+maxretry = 5
+# Send email alerts (configure your mail server)
+destemail = admin@yourdomain.com
+sendername = Fail2Ban-Alert
+action = %(action_mwl)s
+
+# ─── SSH Protection ───────────────────────────────────────────────────────────
+[sshd]
+enabled  = true
+port     = ssh
+filter   = sshd
+logpath  = /var/log/auth.log
+maxretry = 3
+bantime  = 86400  ; 24h for SSH brute force
+
+# ─── Node.js / Express API Protection ────────────────────────────────────────
+[nodejs-auth]
+enabled  = true
+port     = 3000
+filter   = nodejs-auth
+logpath  = /var/log/nodejs/access.log
+maxretry = 5
+findtime = 300
+bantime  = 3600
+
+# ─── Nginx / Apache (if fronting Express) ────────────────────────────────────
+[nginx-http-auth]
+enabled  = true
+filter   = nginx-http-auth
+logpath  = /var/log/nginx/error.log
+maxretry = 3
+
+[nginx-req-limit]
+enabled  = true
+filter   = nginx-req-limit
+logpath  = /var/log/nginx/error.log
+maxretry = 10
